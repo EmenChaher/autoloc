@@ -1,12 +1,11 @@
-package tn.esprit.tic.autoloc.service;
-
 
 package tn.esprit.tic.autoloc.service;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.tic.autoloc.domain.Vehicule;
 import tn.esprit.tic.autoloc.repository.VehiculeRepository;
-import tn.esprit.tic.autoloc.service.interfaces.IVehiculeService;
+import tn.esprit.tic.autoloc.service.IVehiculeService;
 
 import java.util.List;
 
