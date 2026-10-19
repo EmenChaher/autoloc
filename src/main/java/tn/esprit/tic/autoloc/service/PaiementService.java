@@ -1,0 +1,45 @@
+package tn.esprit.tic.autoloc.service;
+
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+import tn.esprit.tic.autoloc.domain.Paiement;
+import tn.esprit.tic.autoloc.repository.PaiementRepository;
+
+import java.util.List;
+
+@Service
+@AllArgsConstructor
+public class PaiementService implements IPaiementService{
+
+    PaiementRepository paiementRepository;
+
+    @Override
+    public List<Paiement> retrieveAllPaiements() {
+        return paiementRepository.findAll();
+    }
+
+    @Override
+    public Paiement addPaiement(Paiement p) {
+        return paiementRepository.save(p);
+    }
+
+    @Override
+    public Paiement updatePaiement(Paiement p) {
+        return paiementRepository.save(p);
+    }
+
+    @Override
+    public Paiement retrievePaiement(Long idPaiement) {
+        return paiementRepository.findById(idPaiement).orElse(null);
+    }
+
+    @Override
+    public void removePaiement(Long idPaiement) {
+        paiementRepository.deleteById(idPaiement);
+    }
+
+    @Override
+    public List<Paiement> addPaiements(List<Paiement> paiements) {
+        return paiementRepository.saveAll(paiements);
+    }
+}

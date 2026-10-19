@@ -1,4 +1,8 @@
 package tn.esprit.tic.autoloc.repository;
 
-public class EquipementRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import tn.esprit.tic.autoloc.domain.Equipement;
+
+public interface EquipementRepository extends JpaRepository<Equipement, Long> {
+
 }

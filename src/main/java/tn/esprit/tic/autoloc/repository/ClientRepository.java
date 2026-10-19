@@ -1,4 +1,8 @@
 package tn.esprit.tic.autoloc.repository;
 
-public class ClientRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import tn.esprit.tic.autoloc.domain.Client;
+
+public interface ClientRepository extends JpaRepository<Client, Long> {
+
 }

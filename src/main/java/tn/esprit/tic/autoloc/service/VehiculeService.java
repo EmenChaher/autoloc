@@ -1,39 +1,45 @@
-
 package tn.esprit.tic.autoloc.service;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.tic.autoloc.domain.Vehicule;
 import tn.esprit.tic.autoloc.repository.VehiculeRepository;
-import tn.esprit.tic.autoloc.service.IVehiculeService;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
-public class VehiculeService implements IVehiculeService {
+@AllArgsConstructor
+public class VehiculeService implements IVehiculeService{
 
-    private final VehiculeRepository vehiculeRepository;
+    VehiculeRepository vehiculeRepository;
 
     @Override
-    public List<Vehicule> getAll() {
+    public List<Vehicule> retrieveAllVehicules() {
         return vehiculeRepository.findAll();
     }
 
     @Override
-    public Vehicule getById(Long id) {
-        return vehiculeRepository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Vehicule not found: " + id));
+    public Vehicule addVehicule(Vehicule v) {
+        return vehiculeRepository.save(v);
     }
 
     @Override
-    public Vehicule save(Vehicule vehicule) {
-        return vehiculeRepository.save(vehicule);
+    public Vehicule updateVehicule(Vehicule v) {
+        return vehiculeRepository.save(v);
     }
 
     @Override
-    public void delete(Long id) {
-        vehiculeRepository.deleteById(id);
+    public Vehicule retrieveVehicule(Long idVehicule) {
+        return vehiculeRepository.findById(idVehicule).orElse(null);
+    }
+
+    @Override
+    public void removeVehicule(Long idVehicule) {
+        vehiculeRepository.deleteById(idVehicule);
+    }
+
+    @Override
+    public List<Vehicule> addVehicules(List<Vehicule> vehicules) {
+        return vehiculeRepository.saveAll(vehicules);
     }
 }
